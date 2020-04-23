@@ -1,1 +1,18 @@
+local component = require("component")
 
+local refresh = 10  --время в секундах, через которое прозойдёт проверка МЕ системы
+local interface = component.me_interface 
+
+local function energyIdle() 
+
+
+
+
+
+while true do
+
+
+
+
+os.sleep(refresh)
+end
