@@ -1,7 +1,7 @@
 local component = require("component")
 local term = require("term")
 
-local refresh = 10  --время в секундах, через которое прозойдёт проверка МЕ системы
+local refresh = 1  --время в секундах, через которое прозойдёт проверка МЕ системы
 local interface = component.me_interface  
 
 component.gpu.setResolution(8,5)
