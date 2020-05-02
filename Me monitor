@@ -3,17 +3,25 @@ local term = require("term")
 
 local refresh = 1  --время в секундах, через которое прозойдёт проверка МЕ системы
 local interface = component.me_interface  
+local chatbox = component.chat_box
 
 component.gpu.setResolution(8,5)
 term.clear()
 term.setCursor(1,1)
 print("Текущее потребление МЕ:\n")
 
+local function AeEuConsumption()
+  term.clearLine()
+  local pow = interface.getAvgPowerInjection()
+  pow = pow*0.5 -- конвертация из ае в еу
+  term.write(math.floor(pow)) -- округление до целого
+  term.write(" EU")
+end
+
+local function SayIfAeDone()
+local Cpus = {Busy,_,Name}
 while true do
-term.clearLine()
-local pow = interface.getAvgPowerInjection()
-pow = pow*0.5 -- конвертация из ае в еу
-term.write(math.floor(pow)) -- округление до целого
-term.write(" EU")
+AeEuConsumption()
+SayIfAeDone()
 os.sleep(refresh)
 end
