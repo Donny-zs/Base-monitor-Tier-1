@@ -4,6 +4,18 @@ local term = require("term")
 local refresh = 1  --время в секундах, через которое прозойдёт проверка МЕ системы
 local interface = component.me_interface  
 local chatbox = component.chat_box
+Cpus = interface.getCpus()
+CpusMem = interface.getCpus()
+
+local function SayIfAeDone()
+Cpus=interface.getCpus()
+  for i=1,#Cpus do
+    if Cpus[i]["busy"] ~= CpusMem[i]["busy"]
+    then chatbox.say("Ячейка крафта "..Cpus[i]["name"].." изменила состояние") end
+    CpusMem=interface.getCpus()
+    end
+  end
+end
 
 component.gpu.setResolution(8,5)
 term.clear()
@@ -18,8 +30,6 @@ local function AeEuConsumption()
   term.write(" EU")
 end
 
-local function SayIfAeDone()
-local Cpus = {Busy,_,Name}
 while true do
 AeEuConsumption()
 SayIfAeDone()
