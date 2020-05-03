@@ -13,16 +13,13 @@ term.setCursor(1,1)
 print("Текущее потребление МЕ:\n")
 
 local function SayIfAeDone()
-Cpus=interface.getCpus()
+  Cpus=interface.getCpus()
   for i=1,#Cpus do --кол-во циклов от 1 до кол-ва процессоров, i+1 каждый раз, так что каждый раз цикл говорит со следующим процессором
-    if Cpus[i]["busy"] ~= CpusMem[i]["busy"] 
-    then CpusMem=interface.getCpus()
-      if Cpus[i]["busy"]==false 
-        then chatbox.say("Ячейка крафта "..Cpus[i]["name"].." закончила работу") end
-        CpusMem=interface.getCpus()
-      end
+    if Cpus[i]["busy"] ~= CpusMem[i]["busy"] and Cpus[i]["busy"]==false 
+      then chatbox.say("Ячейка крафта "..Cpus[i]["name"].." закончила работу")
     end
   end
+  CpusMem=interface.getCpus()
 end
 
 local function AeEuConsumption()
