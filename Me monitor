@@ -14,7 +14,7 @@ print("Текущее потребление МЕ:\n")
 
 local function SayIfAeDone()
   Cpus=interface.getCpus()
-  if #Cpus = 1 then return false end
+  if (#Cpus = 1) or (Cpus == nil) then return false end
   for i=1,#Cpus do --кол-во циклов от 1 до кол-ва процессоров, i+1 каждый раз, так что каждый раз цикл говорит со следующим процессором
     if Cpus == nil then return false 
     else
@@ -27,6 +27,7 @@ end
 
 local function AeEuConsumption()
   term.clearLine()
+  if pow == nil then return false end
   local pow = interface.getAvgPowerInjection()
   pow = pow*0.5 -- конвертация из ае в еу
   term.write(math.floor(pow)) -- округление до целого
