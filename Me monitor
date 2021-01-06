@@ -20,6 +20,7 @@ local function SayIfAeDone()
     else
       Cpus[i]["busy"] ~= CpusMem[i]["busy"] and Cpus[i]["busy"]==false 
       then chatbox.say("Ячейка крафта "..Cpus[i]["name"].." закончила работу")
+      component.computer.beep()
     end
   end
   CpusMem=interface.getCpus()
