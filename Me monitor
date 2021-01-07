@@ -35,8 +35,19 @@ local function AeEuConsumption()
   term.write(" EU")
 end
 
+local function exit()
+_,_,_,a = event.pull(1,"key_down")
+		if a == 33 then
+			redstone.setOutput(RsGo,0)
+			term.clearLine()
+			term.write("Программа завершена пользователем")
+			os.exit()
+		end
+end
+
 while true do
 AeEuConsumption()
 SayIfAeDone()
 os.sleep(refresh)
+exit()
 end
