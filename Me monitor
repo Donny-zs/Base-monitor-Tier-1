@@ -1,5 +1,6 @@
 local component = require("component")
 local term = require("term")
+local event = require("event")   
 
 local refresh = 1  --время в секундах, через которое прозойдёт проверка МЕ системы
 local interface = component.me_interface  
@@ -21,6 +22,7 @@ local function SayIfAeDone()
       if Cpus[i]["busy"] ~= CpusMem[i]["busy"] and Cpus[i]["busy"]==false 
       then chatbox.say("Ячейка крафта "..Cpus[i]["name"].." закончила работу")
       component.computer.beep()
+    end
     end
   end
   CpusMem=interface.getCpus()
