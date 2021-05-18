@@ -32,9 +32,7 @@ local function AeEuConsumption()
   term.clearLine()
   local pow = interface.getAvgPowerInjection()
   if pow == nil then return false end
-  pow = pow*0.5 -- конвертация из ае в еу
-  term.write(math.floor(pow)) -- округление до целого
-  term.write(" EU")
+  term.write(math.floor(pow*0.5) + " EU") -- *0.5 конвертация из ае в еу -округление до целого
 end
 
 local function exit()
